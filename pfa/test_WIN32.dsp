@@ -90,7 +90,7 @@ SOURCE=.\PortableFileAPI.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\test_WIN32.cpp
+SOURCE=.\test.cpp
 # End Source File
 # End Target
 # End Project
