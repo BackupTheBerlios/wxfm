@@ -42,3 +42,4 @@ int PFA_stat (const char * path, PFA_STAT * st);
 #endif
 
 #endif /* PortableFileAPI_h */
+

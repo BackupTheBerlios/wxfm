@@ -6,10 +6,10 @@
 #include <string.h>
 
 /************************************************************************/
-/*                               unix                                   */
+/*                               solaris                                */
 /************************************************************************/
 
-#if defined(unix) && !defined(linux)
+#ifdef solaris
 
 #define INT64_FORMAT "%lld"
 
@@ -40,7 +40,7 @@ int PFA_stat (const char * path, PFA_STAT * st)
 	return 0;
 }
 
-#endif /* unix */
+#endif /* solaris */
 
 /************************************************************************/
 /*                               linux                                  */
@@ -52,7 +52,6 @@ int PFA_stat (const char * path, PFA_STAT * st)
 
 #include <sys/types.h>
 #include <sys/stat.h>
-//#include <unistd.h>
 
 int PFA_stat (const char * path, PFA_STAT * st)
 {
