@@ -7,23 +7,30 @@ extern "C" {
 
 #include <time.h>
 
-#define PFA_ERROR  -1
-#define PFA_FILE    1
-#define PFA_DIR     2
-
-/* file stat functions */
-
-/* returns -1 on error */
-#ifdef unix
-long long PFA_GetFileSize (const char * path);
-#endif
+/* 64 bit integer type */
 #ifdef WIN32
-__int64 PFA_GetFileSize (const char * path);
+typedef __int64		int64;
+#else
+typedef long long	int64;
 #endif
 
-int PFA_GetFileType (const char * path);
+/* file stat structure */
+typedef struct {
+	unsigned int	st_dev;
+	unsigned short	st_ino;
+	unsigned short	st_mode;
+	short			st_nlink;
+	short			st_uid;
+	short			st_gid;
+	unsigned int	st_rdev;
+	int64			st_size;
+	time_t			st_atime;
+	time_t			st_mtime;
+	time_t			st_ctime;
+} PFA_STAT;
 
-int PFA_GetFileTime (const char * path, time_t * created, time_t * modified, time_t * accessed);
+/* file stat function */
+int64 PFA_stat (const char * path, PFA_STAT * st);
 
 #ifdef __cplusplus
 }
